@@ -14,7 +14,7 @@ const switchArrows = document.querySelectorAll(".switch span");
 
 // 404
 function giglet404() {
-	location.href = "/404.html";
+	location.href = "./404.html";
 }
 pistacheElements.forEach((elem) => {
 	if (elem.length > 0) {
