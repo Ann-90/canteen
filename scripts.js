@@ -1,4 +1,5 @@
 const pistacheElements = [
+	document.querySelectorAll(".drop-menu__item"),
 	document.querySelectorAll(".carousel__btn"),
 	document.querySelector(".fast-access__bin"),
 	document.querySelector(".fast-access__phone"),
@@ -6,7 +7,13 @@ const pistacheElements = [
 	document.querySelector(".sales__link"),
 	document.querySelector(".logoRIP__alllogos"),
 	document.querySelector(".bottom-menu"),
+	document.querySelectorAll(".nav__list li"),
 ];
+
+const mainInfo = document.querySelector(".main-info");
+const empty = document.querySelector(".empty");
+const searchForm = document.querySelector(".search-form");
+const search = document.querySelector(".fast-access__search");
 
 const carousel = document.querySelector(".carousel__scroll");
 const switchers = document.querySelectorAll(".switch__switcher");
@@ -22,6 +29,22 @@ pistacheElements.forEach((elem) => {
 			e.addEventListener("click", giglet404);
 		});
 	} else elem.addEventListener("click", giglet404);
+});
+//searchForm
+[mainInfo, empty, carousel].forEach((elem) => {
+	elem.addEventListener("click", (e) => {
+		searchForm.classList.add("searchForm_inactive");
+	});
+});
+search.addEventListener("click", (e) => {
+	searchForm.classList.toggle("searchForm_inactive");
+});
+searchForm.addEventListener("submit", (e) => {
+	console.log(e.target.childNodes[1]);
+
+	alert(
+		`Oops! It seems to be a test page ¯\\_(ツ)_/¯. Here is your message: ${e.target.childNodes[1].value}`
+	);
 });
 
 // carousel

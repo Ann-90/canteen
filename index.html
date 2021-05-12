@@ -9,10 +9,21 @@
 	<body>
 		<header>
 			<menu class="top-menu">
-				<div class="main-info">
-					<figure class="menu">
-						<img src="/public/menu_lines.png" alt="" />
-					</figure>
+				<div class="top-menu__main-info main-info">
+					<ul class="main-info__drop-menu drop-menu">
+						<li class="drop-menu__menu">
+							<figure class="menu">
+								<img src="/public/menu_lines.png" alt="" />
+							</figure>
+							<ul class="drop-menu__list">
+								<li class="drop-menu__item">Информация</li>
+								<li class="drop-menu__item">Оборудование</li>
+								<li class="drop-menu__item">Предложения</li>
+								<li class="drop-menu__item">Контакты</li>
+								<li class="drop-menu__item">Реквизиты</li>
+							</ul>
+						</li>
+					</ul>
 
 					<div class="main-info__logo logo-linear">
 						<figure class="logo-linear__icon">
@@ -24,8 +35,23 @@
 						</div>
 					</div>
 				</div>
-
+				<div class="empty"></div>
 				<div class="fast-access">
+					<form
+						class="
+							top-menu__search-form
+							search-form
+							searchForm_inactive
+						"
+					>
+						<input
+							class="search-form__input"
+							type="text"
+							name="search-form"
+							placeholder="Что ищем?"
+							value=""
+						/>
+					</form>
 					<figure class="fast-access__search">
 						<img src="/public/magnifire.png" alt="" />
 					</figure>

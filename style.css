@@ -64,6 +64,7 @@ figure img {
 
 /* hover */
 .menu:hover,
+.drop-menu__list li:hover,
 .bottom-menu:hover,
 .fast-access__search:hover,
 .fast-access__phone:hover,
@@ -81,6 +82,7 @@ figure img {
 }
 
 /* color */
+.drop-menu__list li,
 .top-menu,
 .bottom-menu,
 main {
@@ -92,6 +94,7 @@ main {
 .card {
 	background-color: #ffffff;
 }
+
 .carousel,
 .catalog__abat,
 .add,
@@ -112,6 +115,7 @@ html {
 .fast-access__bin {
 	color: #fda11c;
 }
+
 .solutions p,
 .logo-linear__information p:first-of-type {
 	color: #353535;
@@ -128,9 +132,11 @@ html {
 .carousel__textblock p {
 	color: #f3f1f1;
 }
+
 .catalog__abat h4 {
 	color: #d4d4d4;
 }
+.drop-menu__list li,
 .logo-linear__information p:last-of-type,
 .carousel__textblock p:first-of-type,
 .sales__paragraph,
@@ -150,8 +156,17 @@ html {
 	margin-bottom: 9px;
 }
 
-.main-info .menu {
+.menu {
 	margin-right: 30px;
+}
+.drop-menu__list {
+	position: absolute;
+	display: none;
+}
+.drop-menu__menu:hover .drop-menu__list {
+	display: initial;
+	background-color: #faad3d;
+	z-index: 3;
 }
 .menu {
 	width: 75px;
@@ -169,6 +184,25 @@ html {
 }
 .fast-access__bin img {
 	width: 56px;
+}
+.empty {
+	width: 100%;
+	height: 100%;
+}
+.searchForm_inactive {
+	display: none;
+}
+
+.search-form {
+	position: absolute;
+
+	z-index: 2;
+}
+.search-form__input {
+	outline: none;
+	height: 100%;
+	width: 100%;
+	padding: 10px;
 }
 .bottom-menu {
 	align-self: flex-end;
@@ -329,6 +363,12 @@ li {
 	.menu {
 		width: 55px;
 	}
+	.drop-menu__list {
+		width: 80%;
+	}
+	.drop-menu__list li {
+		padding: 20px;
+	}
 	.main-info__logo figure {
 		width: 35px;
 	}
@@ -342,6 +382,17 @@ li {
 
 	.fast-access__bin img {
 		width: 35px;
+	}
+	.empty {
+		padding: 20px;
+	}
+	.top-menu__search-form {
+		margin-top: 120px;
+	}
+	.search-form {
+		height: 30px;
+		left: 0px;
+		right: 25px;
 	}
 	.carousel {
 		padding: 35px 30px;
@@ -442,17 +493,19 @@ li {
 		width: 50px;
 	}
 	/* fonts */
+	.search-form__input,
 	.carousel__textblock,
 	.sales__paragraph,
 	.footer__source {
 		font-size: 15px;
 		line-height: 20px;
 	}
+	.drop-menu__list li,
 	.carousel__cardname,
 	.sales__header,
 	.card h3 {
 		font-size: 20px;
-		line-height: 25px;
+		line-height: 30px;
 	}
 	.logo-linear__information,
 	.bottom-menu,
@@ -509,6 +562,23 @@ li {
 	.top-menu,
 	.bottom-menu {
 		padding: 30px;
+	}
+	.drop-menu__list {
+		width: 25%;
+	}
+	.drop-menu__list li {
+		padding: 30px;
+	}
+	.top-menu__search-form {
+		margin-top: 240px;
+	}
+	.empty {
+		padding: 40px;
+	}
+	.search-form {
+		height: 80px;
+		left: 0px;
+		right: 25px;
 	}
 	.carousel {
 		padding: 40px 35px;
@@ -601,6 +671,7 @@ li {
 		padding: 40px 45px;
 	}
 	/* fonts */
+
 	.carousel__textblock,
 	.sales__paragraph {
 		font-size: 20px;
@@ -614,6 +685,8 @@ li {
 		font-size: 40px;
 		line-height: 45px;
 	}
+	.drop-menu__list li,
+	.search-form__input,
 	.fast-access__bin,
 	.logo-linear__information,
 	.carousel__btn,
@@ -648,6 +721,9 @@ li {
 
 /* details */
 @media screen and (min-width: 300px) and (max-width: 500px) {
+	.empty {
+		display: none;
+	}
 	.carousel__container {
 		text-align: center;
 	}
@@ -681,6 +757,7 @@ li {
 		margin-left: -200px;
 	}
 }
+
 @media screen and (min-width: 1440px) {
 	.main-content {
 		padding: 30px 72px 95px 72px;
