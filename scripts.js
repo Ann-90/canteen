@@ -40,8 +40,6 @@ search.addEventListener("click", (e) => {
 	searchForm.classList.toggle("searchForm_inactive");
 });
 searchForm.addEventListener("submit", (e) => {
-	console.log(e.target.childNodes[1]);
-
 	alert(
 		`Oops! It seems to be a test page ¯\\_(ツ)_/¯. Here is your message: ${e.target.childNodes[1].value}`
 	);
@@ -49,45 +47,35 @@ searchForm.addEventListener("submit", (e) => {
 
 // carousel
 let carouselTimer = setInterval(() => {
-	scroll();
+	moveScroll(findNextPosition());
 }, 6000);
 
-function scroll() {
-	removeClass(switchers, "switch__switcher_active");
-	let next = findPosition();
-	changeSwitcherClass(next);
-	moveScroll(next);
-}
-
-function removeClass(element, id) {
-	element.forEach((elem) => {
-		elem.classList.remove(id);
-	});
-}
-
-function findPosition() {
-	let next;
+function findNextPosition() {
 	let scrollLeft = carousel.scrollLeft;
-	const step = carousel.clientWidth;
+	const step = carousel.clientWidth + 20;
 	const fullscroll = carousel.scrollWidth;
+	let next;
 
-	if (scrollLeft === fullscroll - step) {
-		// scrollLeft = 0;
+	if (scrollLeft >= fullscroll - step) {
 		next = 0;
-	} else if (scrollLeft > fullscroll - step * 2.5) {
+	} else if (scrollLeft > fullscroll - step * 2) {
 		next = 3;
-	} else if (scrollLeft > fullscroll - step * 3.5) {
+	} else if (scrollLeft > fullscroll - step * 3) {
 		next = 2;
-	} else if (scrollLeft === 0) {
+	} else {
 		next = 1;
-	} else next = 0;
+	}
+
 	return next;
 }
 
 function changeSwitcherClass(pos) {
-	removeClass(switchers, "switch__switcher_active");
+	switchers.forEach((elem) => {
+		elem.classList.remove("switch__switcher_active");
+	});
 	switchers[pos].classList.add("switch__switcher_active");
 }
+
 function moveScroll(pos) {
 	document.body.clientWidth > 720
 		? (carousel.scrollLeft = (carousel.clientWidth + 30) * pos)
@@ -105,14 +93,14 @@ function handleSwitchers(event) {
 
 switchers.forEach((element, index) => {
 	element.addEventListener("click", (e) => {
-		changeSwitcherClass(index);
+		// changeSwitcherClass(index);
 		moveScroll(index);
 	});
 });
 
 switchArrows.forEach((element, index) => {
 	element.addEventListener("click", (e) => {
-		let next = findPosition();
+		let next = findNextPosition();
 		next === 0 ? (next = 3) : next--;
 
 		if (e.target === switchArrows[0]) {
@@ -121,7 +109,12 @@ switchArrows.forEach((element, index) => {
 			next === 3 ? (next = 0) : next++;
 		}
 
-		changeSwitcherClass(next);
+		// changeSwitcherClass(next);
 		moveScroll(next);
 	});
+});
+
+carousel.addEventListener("scroll", (ev) => {
+	let position = findNextPosition() !== 0 ? findNextPosition() - 1 : 3;
+	changeSwitcherClass(position);
 });
