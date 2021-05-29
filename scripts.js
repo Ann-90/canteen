@@ -41,7 +41,7 @@ search.addEventListener("click", (e) => {
 });
 searchForm.addEventListener("submit", (e) => {
 	alert(
-		`Oops! It seems to be a test page ¯\\_(ツ)_/¯. Here is your message: ${e.target.childNodes[1].value}`
+		`Вот это да! Кажется, это тестовая страница ¯\\_(ツ)_/¯. \nВидимо, вы искали это: ${e.target.childNodes[1].value}`
 	);
 });
 
@@ -93,7 +93,6 @@ function handleSwitchers(event) {
 
 switchers.forEach((element, index) => {
 	element.addEventListener("click", (e) => {
-		// changeSwitcherClass(index);
 		moveScroll(index);
 	});
 });
@@ -109,7 +108,6 @@ switchArrows.forEach((element, index) => {
 			next === 3 ? (next = 0) : next++;
 		}
 
-		// changeSwitcherClass(next);
 		moveScroll(next);
 	});
 });
